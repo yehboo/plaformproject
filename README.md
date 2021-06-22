@@ -10,16 +10,16 @@ Build process & Introduction:
 2.輸出的資料為: 景點名稱, 景點住址, 景點開放時間, 電話, 路線規劃, 景點介紹。 
 3.而在同個目的地會生成html檔, 其中會出現剛剛查詢的資料在台灣的位置, 並用icon標記, 而鼠標移到icon會有景點的名稱。 
 4.結束此系統只需輸入"exit"即可退出。
--
+
 Details of the approach:
 一開始使用json.load()抓取API上的data，接著找出需要用到的data格放入alist。有所需的data格後處理就相對簡單，先輸入input, 如果input有在data中就排版輸出此data的相關資料。而相關資料中, 用placex_list和placey_list去儲存景點的經度和緯度，接著zip將經緯度合在一起放入placename_list，而為了能夠在地圖的marker中也顯示景點名稱, 順便將名字也存入placename_list中。以上也將地圖所需的資料都準備好，接著將地圖視覺化。
 
 此project的視覺化是使用html的方式呈現，借助folium, 一開始default出整個台灣地圖。接著將剛剛place_list的資料, 在生成的map上做記號。 其中ablocation[0], [1]是景點絕對位置, ablocation[2]為名稱，用folium的add.child將所有資料都標示，最後save map, 輸出標示地圖。
--
+
 Result:
 所有景觀的資料, 包括: 景點名稱, 景點住址, 景點開放時間, 電話, 路線規劃, 景點介紹。
 map1.html: 警官在台灣地圖的各個位置。
--
+
 References:
 1. 政府的資料開放平台: (https://data.gov.tw/dataset/7777)
 2. API: (https://gis.taiwan.net.tw/XMLReleaseALL_public/scenic_spot_C_f.json)
